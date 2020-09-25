@@ -1,9 +1,23 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import logo from './logo.svg';
+import { useDispatch } from 'react-redux';
 import './App.css';
+import Header from './components/Header';
+import { startGetPokemons } from './redux/actions/pokemons';
 
 function App() {
+  const dispatch = useDispatch()
+  const [pokemons, setPokemons] = useState([]);
+
+  useEffect(() => {
+    if (pokemons.length === 0) {
+      dispatch(startGetPokemons());
+      setPokemons([{},{}]);
+    }
+  })
   return (
+    <React.Fragment>
+    <Header></Header>
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
@@ -20,6 +34,7 @@ function App() {
         </a>
       </header>
     </div>
+    </React.Fragment>
   );
 }
 
