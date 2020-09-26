@@ -6,13 +6,13 @@ import { getId } from "../../helpers/pokemonUtils";
 
 
 // Actions types
-const FETCH_POKEMON_LIST = "pokemon-frontend/pokemon/FETCH_POKEMON_LIST";
+const FETCH_POKEMON_LIST = "FETCH_POKEMON_LIST";
 const FETCH_POKEMON_LIST_SUCCESS =
-  "pokemon-frontend/pokemon/FETCH_POKEMON_LIST_SUCCESS";
+  "FETCH_POKEMON_LIST_SUCCESS";
 const FETCH_POKEMON_LIST_FAILURE =
-  "pokemon-frontend/pokemon/FETCH_POKEMON_LIST_FAILURE";
-const DISPLAY_MORE_BEGIN = "pokemon-frontend/pokemon/DISPLAY_MORE_BEGIN";
-const DISPLAY_MORE_END = "pokemon-frontend/pokemon/DISPLAY_MORE_END";
+  "FETCH_POKEMON_LIST_FAILURE";
+const DISPLAY_MORE_BEGIN = "DISPLAY_MORE_BEGIN";
+const DISPLAY_MORE_END = "DISPLAY_MORE_END";
 
 const initialState = { pokemonList: [], isLoading: false, error: "" };
 
