@@ -33,12 +33,10 @@ const PokemonList = props => {
           onScroll={handleScroll}
           style={{ height: "500px", overflow: "auto" }}
         >
-          {pokemonList.map(pokemon => {
+          {pokemonList.map((pokemon,index) => {
             const { id, name } = pokemon;
             return (
-              <div key={pokemon.url} className="col-sm-3">
-                <PokemonListItem id={id} name={name} />
-              </div>
+                <PokemonListItem id={id} name={name} key={index} />
             );
           })}
         </div>

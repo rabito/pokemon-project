@@ -1,8 +1,10 @@
 import React from "react";
+import {Link} from 'react-router-dom';
 
 const PokemonListItem = ({ id, name }) => {
   return (
     <>
+      <Link to={`/pokemon/${name}/${id}`}>
       <div className="column">
         <div className="card">
           <img
@@ -13,6 +15,7 @@ const PokemonListItem = ({ id, name }) => {
           <p>{name}</p>
         </div>
       </div>
+      </Link>
     </>
   );
 };
