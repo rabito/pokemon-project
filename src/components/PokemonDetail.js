@@ -25,8 +25,10 @@ class PokemonDetail extends React.Component {
 
     render() {
         let abilidades = [];
+        let tipos = [];
         if (this.state.render) {
           abilidades = this.state.pokemon.abilities;
+          tipos = this.state.pokemon.types;
         }
         return (
             <React.Fragment>
@@ -42,6 +44,9 @@ class PokemonDetail extends React.Component {
               <p><b>Peso: </b>{this.state.pokemon.weight / 10} kg</p>
               {abilidades.map((ability, index) => {
                   return <p key={index}><b>Habilidad {index+1}: </b>{ability.ability.name}</p>
+              })}
+              {tipos.map((tipo, index) => {
+                  return <p key={index}><b>Tipo {index+1}: </b>{tipo.type.name}</p>
               })}
             </div>
 
