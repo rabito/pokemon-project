@@ -3,7 +3,7 @@ import pokemon from '../pokemon.png';
 
 class Header extends React.Component {
     constructor(props) {
-        super(props);
+        super(props); 
     }
 
     componentDidMount(){}
@@ -28,11 +28,9 @@ class Header extends React.Component {
                 <p style={{float:"right"}}><small><strong>Raúl Batres</strong></small></p>
             </div>
             <div className="topnav2" id="myTopnav">
-                <a href="#home" className="active">Home</a>
-                <a href="#news">News</a>
-                <a href="#contact">Contact</a>
-                <a href="#about">About</a>
-                <a href="javascript:void(0);" className="icon" onClick={this.menu}>
+                <a href="#home" className="active">POKEMONS</a>
+                <a href="#news">FAVORITOS</a>
+                <a href="#" className="icon" onClick={this.menu}>
                     <i className="fa fa-bars"></i>
                 </a>
             </div>
