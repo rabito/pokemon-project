@@ -136,3 +136,14 @@
   border: 3px solid #196EEF;
   padding: 10px;
 }
+
+.checked {
+  color: orange;
+}
+
+.centerstar {
+  text-align: center;
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}

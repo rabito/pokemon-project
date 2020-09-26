@@ -1,5 +1,6 @@
 import React from "react";
 import pokemon from '../pokemon.png';
+import { Link } from "react-router-dom";
 
 class Header extends React.Component {
     constructor(props) {
@@ -28,8 +29,8 @@ class Header extends React.Component {
                 <p style={{float:"right"}}><small><strong>Raúl Batres</strong></small></p>
             </div>
             <div className="topnav2" id="myTopnav">
-                <a href="#home" className="active">POKEMONS</a>
-                <a href="#news">FAVORITOS</a>
+                <Link to={'/'}><a href="">POKEMONS</a></Link>
+                <Link to={'/favoritos/'}><a href="">FAVORITOS</a></Link>
                 <a href="#" className="icon" onClick={this.menu}>
                     <i className="fa fa-bars"></i>
                 </a>

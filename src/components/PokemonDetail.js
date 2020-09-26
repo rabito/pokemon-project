@@ -1,5 +1,4 @@
 import React from "react";
-import {useParams} from 'react-router-dom';
 
 
 class PokemonDetail extends React.Component {
