@@ -98,6 +98,13 @@ export const pokemonListFilterSelector = createSelector(
   },
 );
 
+export const pokemonListTotal = createSelector(
+  [pokemonListSelector, filterSelector],
+  (pokemonList) => {
+    return pokemonList
+  },
+);
+
 export const pokemonListCount = createSelector(
   [pokemonListSelector],
   (pokemonList) => pokemonList.length

@@ -1,18 +1,23 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { loadPokemonList, displayMorePokemon, pokemonListFilterSelector, pokemonListCount } from "../redux/modules/pokemonList";
+import { loadPokemonList, displayMorePokemon, pokemonListFilterSelector, pokemonListCount, pokemonListTotal } from "../redux/modules/pokemonList";
 import PokemonListItem from "./PokemonListItem";
+const _ = require('underscore');
 
 const PokemonList = props => {
-  const {
+  let {
     fetchActionCreator,
     displayMore,
     isLoading,
     error,
     pokemonList,
-    totalPokemonCount
+    totalPokemonCount,
+    pokemonListTotal
   } = props;
+
+  const [buscar, setBuscar] = useState(false);
+  const [pokefind, setPokefind] = useState([]);
 
   useEffect(() => {
     fetchActionCreator();
@@ -25,20 +30,40 @@ const PokemonList = props => {
     }
   };
 
+  let buscador = () => {
+    let p = document.getElementById("search").value;
+    if (p == "") {
+      setBuscar(false);
+    } else {
+      if (p.length > 2) {
+        var out = _.filter(pokemonListTotal, function(item) { 
+          return item.name.indexOf(p) != -1; 
+        });
+        setPokefind(out)
+        setBuscar(true);
+      } else {
+        alert("La busqueda debe contener al menos 3 caracteres");
+      }
+    }
+  }
+
   if (error) return <p>Error</p>;
   return (
       <div className="border m-5">
+        <div className="centerstar">
+        <input type="text" name="search" id="search" /><button onClick={buscador}>BUSCAR</button>
+        </div>
         <div
           className="row"
           onScroll={handleScroll}
           style={{ height: "500px", overflow: "auto" }}
         >
-          {pokemonList.map((pokemon,index) => {
-            const { id, name } = pokemon;
-            return (
-                <PokemonListItem id={id} name={name} key={index} />
-            );
-          })}
+          {
+            buscar
+            ? pokefind.map((pokemon,index) => { const { id, name } = pokemon; return ( <PokemonListItem id={id} name={name} key={index} /> ); })
+            : pokemonList.map((pokemon,index) => { const { id, name } = pokemon; return ( <PokemonListItem id={id} name={name} key={index} /> ); })
+      
+          }
         </div>
         {isLoading && (
           <div className="text-center">
@@ -61,6 +86,7 @@ const mapStateToProps = state => ({
   error: state.pokemonListReducer.error,
   pokemonList: pokemonListFilterSelector(state),
   totalPokemonCount: pokemonListCount(state),
+  pokemonListTotal: pokemonListTotal(state)
 });
 
 const mapDispatchToProps = dispatch => {
